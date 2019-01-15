@@ -1,34 +1,35 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { BrowserRouter, Route } from 'react-router-dom';
+
+import { withStyles } from '@material-ui/core/styles';
+
+import styles from './styles';
+import Header from '../../Header';
+import LeftBar from '../../LeftBar';
 
 const Index = () => <h2>Home</h2>;
 const About = () => <h2>About</h2>;
 const Users = () => <h2>Users</h2>;
 
-const Content = () => {
+const Content = ({ classes }) => {
   return (
     <BrowserRouter>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about/">About</Link>
-            </li>
-            <li>
-              <Link to="/users/">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Route path="/" exact component={Index} />
-        <Route path="/about/" component={About} />
-        <Route path="/users/" component={Users} />
+      <div className={classes.root}>
+        <Header />
+        <LeftBar />
+        <div className={classes.content}>
+          <Route path="/" exact component={Index} />
+          <Route path="/about/" component={About} />
+          <Route path="/users/" component={Users} />
+        </div>
       </div>
     </BrowserRouter>
   );
 };
 
-export default Content;
+Content.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(Content);
