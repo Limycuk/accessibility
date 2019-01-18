@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router";
 
-import connect from './connect';
-import View from './view';
-import { NAVIGATIONS } from '../../constants/app';
+import connect from "./connect";
+import View from "./view";
+import { NAVIGATIONS } from "../../constants/app";
 
 class LeftBarContainer extends Component {
   constructor(props) {

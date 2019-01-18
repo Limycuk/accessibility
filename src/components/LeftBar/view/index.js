@@ -1,27 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import classNames from "classnames";
 
-import Drawer from '@material-ui/core/Drawer';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import Drawer from "@material-ui/core/Drawer";
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
 
-import styles from './styles';
+import styles from "./styles";
 
 const LeftBar = ({ classes, onClose, isOpenedMenu, links, pathname }) => {
   return (
     <Drawer anchor="left" open={isOpenedMenu} onClose={onClose}>
       <div className={classes.container}>
         <div className={classes.logoContainer}>
-          <Link to="/" className={classes.logo}>
+          <Button
+            component={Link}
+            to="/"
+            className={classes.logo}
+            onClick={onClose}
+          >
             Accessibility
-          </Link>
+          </Button>
         </div>
         <hr className={classes.hr} />
         <nav>
           <ul className={classes.list}>
-            {links.map((item) => {
+            {links.map(item => {
               const className = classNames(classes.link, {
                 [classes.activeLink]: pathname === item.link
               });
@@ -32,7 +37,8 @@ const LeftBar = ({ classes, onClose, isOpenedMenu, links, pathname }) => {
                     component={Link}
                     to={item.link}
                     className={className}
-                    onClick={onClose}>
+                    onClick={onClose}
+                  >
                     {item.title}
                   </Button>
                 </li>

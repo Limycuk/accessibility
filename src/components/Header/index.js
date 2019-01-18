@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 
-import connect from './connect';
-import View from './view';
+import connect from "./connect";
+import View from "./view";
 
 class HeaderContainer extends Component {
   constructor(props) {
@@ -18,8 +18,15 @@ class HeaderContainer extends Component {
   }
 
   render() {
+    const { location } = this.props;
+    const title = location.pathname.split("/")[1];
+
+    const hasLink = Boolean(title);
+
     const props = {
-      toggleMenu: this.toggleMenu
+      toggleMenu: this.toggleMenu,
+      hasLink,
+      title
     };
 
     return <View {...props} />;

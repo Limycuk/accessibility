@@ -1,17 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Icon from '@material-ui/core/Icon';
-import { withStyles } from '@material-ui/core/styles';
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Icon from "@material-ui/core/Icon";
+import { withStyles } from "@material-ui/core/styles";
 
-import styles from './styles';
+import styles from "./styles";
 
-const Header = ({ classes, toggleMenu }) => {
+const Header = ({ classes, toggleMenu, hasLink, title }) => {
   return (
     <AppBar position="static">
       <Toolbar>
@@ -22,6 +24,7 @@ const Header = ({ classes, toggleMenu }) => {
           <Link to="/" className={classes.logo}>
             Accessibility
           </Link>
+          {hasLink && <span className={classes.title}>{title}</span>}
         </Typography>
       </Toolbar>
     </AppBar>
@@ -29,7 +32,12 @@ const Header = ({ classes, toggleMenu }) => {
 };
 
 Header.propTypes = {
-  toggleMenu: PropTypes.func.isRequired
+  toggleMenu: PropTypes.func.isRequired,
+  hasLink: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired
 };
 
-export default withStyles(styles)(Header);
+export default compose(
+  withStyles(styles),
+  withRouter
+)(Header);
