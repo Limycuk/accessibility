@@ -1,12 +1,12 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React from "react";
+import { Provider } from "react-redux";
 
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 
-import createStore from '~/services/createStore';
+import createStore from "~/services/createStore";
 
-import Content from '../../Content';
-import styles from './styles';
+import Content from "../../Content";
+import styles from "./styles";
 
 const { store } = createStore();
 

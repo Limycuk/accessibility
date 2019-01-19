@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import isOpenedMenu from './isOpenedMenu';
+import isOpenedMenu from "./isOpenedMenu";
 
 const reducer = combineReducers({
   isOpenedMenu

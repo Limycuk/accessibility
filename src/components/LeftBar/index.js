@@ -10,7 +10,12 @@ class LeftBarContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      isDisabledAnimation: false
+    };
+
     this.onClose = this.onClose.bind(this);
+    this.toggleDisableAnimation = this.toggleDisableAnimation.bind(this);
   }
 
   onClose() {
@@ -19,14 +24,25 @@ class LeftBarContainer extends Component {
     appActions.toggleDrawer();
   }
 
+  toggleDisableAnimation() {
+    document.body.classList.toggle("no-animation");
+
+    this.setState(prevState => ({
+      isDisabledAnimation: !prevState.isDisabledAnimation
+    }));
+  }
+
   render() {
     const { isOpenedMenu, location } = this.props;
+    const { isDisabledAnimation } = this.state;
 
     const props = {
       onClose: this.onClose,
+      toggleDisableAnimation: this.toggleDisableAnimation,
       isOpenedMenu,
       links: NAVIGATIONS,
-      pathname: location.pathname
+      pathname: location.pathname,
+      isDisabledAnimation
     };
 
     return <View {...props} />;

@@ -1,7 +1,10 @@
 export default () => ({
   container: {
     flexShrink: 0,
-    width: 240
+    flexGrow: 1,
+    width: 240,
+    display: "flex",
+    flexDirection: "column"
   },
   logoContainer: {
     minHeight: 64,
@@ -47,5 +50,11 @@ export default () => ({
   },
   activeLink: {
     color: "#2196f3"
+  },
+  settings: {
+    marginTop: "auto"
+  },
+  animationToggler: {
+    margin: 10
   }
 });
