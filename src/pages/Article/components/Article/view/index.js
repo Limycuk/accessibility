@@ -3,7 +3,7 @@ import DocumentTitle from "react-document-title";
 
 const Article = () => {
   return (
-    <DocumentTitle title="Article">
+    <DocumentTitle title="Article - Accessibility">
       <main>
         <h1>Designing HTML for Safari Reader Mode</h1>
         <div>

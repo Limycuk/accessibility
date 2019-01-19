@@ -6,12 +6,12 @@ import history from "~/services/history";
 
 import { withStyles } from "@material-ui/core/styles";
 import Article from "~/pages/Article";
+import Home from "~/pages/Home";
 
 import styles from "./styles";
 import Header from "../../Header";
 import LeftBar from "../../LeftBar";
 
-const Home = () => <h2>Home</h2>;
 const About = () => <h2>About</h2>;
 
 const Content = ({ classes }) => {
