@@ -4,7 +4,11 @@ import { Router, Route } from "react-router-dom";
 
 import history from "~/services/history";
 
-import { withStyles } from "@material-ui/core/styles";
+import {
+  createMuiTheme,
+  MuiThemeProvider,
+  withStyles
+} from "@material-ui/core/styles";
 import Article from "~/pages/Article";
 import Home from "~/pages/Home";
 import Form from "~/pages/Form";
@@ -14,23 +18,46 @@ import styles from "./styles";
 import Header from "../../Header";
 import LeftBar from "../../LeftBar";
 
-const Content = ({ classes }) => {
+const defaultTheme = createMuiTheme({});
+
+const Content = ({ classes, isReadableMode }) => {
   return (
     <Router history={history}>
-      <div className={classes.root}>
-        <Route
-          children={data => {
-            return <Header {...data} />;
-          }}
-        />
-        <LeftBar />
-        <div className={classes.content}>
-          <Route path="/" exact component={Home} />
-          <Route path="/article" component={Article} />
-          <Route path="/form" component={Form} />
-          <Route path="/list" component={List} />
+      <MuiThemeProvider
+        theme={
+          isReadableMode
+            ? {
+                ...defaultTheme,
+                palette: {
+                  ...defaultTheme.palette,
+                  primary: {
+                    main: "#000000",
+                    contrastText: "#ffffff"
+                  },
+                  secondary: {
+                    main: "#ffffff",
+                    contrastText: "#000000"
+                  }
+                }
+              }
+            : defaultTheme
+        }
+      >
+        <div className={classes.root}>
+          <Route
+            children={data => {
+              return <Header {...data} />;
+            }}
+          />
+          <LeftBar />
+          <div className={classes.content}>
+            <Route path="/" exact component={Home} />
+            <Route path="/article" component={Article} />
+            <Route path="/form" component={Form} />
+            <Route path="/list" component={List} />
+          </div>
         </div>
-      </div>
+      </MuiThemeProvider>
     </Router>
   );
 };

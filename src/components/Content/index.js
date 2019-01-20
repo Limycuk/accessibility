@@ -1,3 +1,4 @@
-import View from './view';
+import connect from "./connect";
+import View from "./view";
 
-export default View;
+export default connect(View);

@@ -6,6 +6,9 @@ export default () => ({
       textDecoration: "underline"
     }
   },
+  button: {
+    marginLeft: "auto"
+  },
   title: {
     textTransform: "capitalize",
     "&:before": {

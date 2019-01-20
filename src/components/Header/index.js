@@ -9,6 +9,7 @@ class HeaderContainer extends Component {
     super(props);
 
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.toggleReadableMode = this.toggleReadableMode.bind(this);
   }
 
   toggleMenu() {
@@ -17,16 +18,32 @@ class HeaderContainer extends Component {
     appActions.toggleDrawer();
   }
 
+  toggleReadableMode() {
+    const { appActions, isReadableMode } = this.props;
+
+    if (isReadableMode) {
+      document.documentElement.style.fontSize = "16px";
+      document.documentElement.style.lineHeight = "normal";
+    } else {
+      document.documentElement.style.fontSize = "30px";
+      document.documentElement.style.lineHeight = "44px";
+    }
+
+    appActions.toggleReadableMode();
+  }
+
   render() {
-    const { location } = this.props;
+    const { location, isReadableMode } = this.props;
     const title = location.pathname.split("/")[1];
 
     const hasLink = Boolean(title);
 
     const props = {
       toggleMenu: this.toggleMenu,
+      toggleReadableMode: this.toggleReadableMode,
       hasLink,
-      title
+      title,
+      isReadableMode
     };
 
     return <View {...props} />;
@@ -34,8 +51,10 @@ class HeaderContainer extends Component {
 }
 
 HeaderContainer.propTypes = {
+  isReadableMode: PropTypes.bool.isRequired,
   appActions: PropTypes.shape({
-    toggleDrawer: PropTypes.func.isRequired
+    toggleDrawer: PropTypes.func.isRequired,
+    toggleReadableMode: PropTypes.func.isRequired
   }).isRequired
 };
 
