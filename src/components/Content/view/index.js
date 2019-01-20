@@ -7,6 +7,7 @@ import history from "~/services/history";
 import { withStyles } from "@material-ui/core/styles";
 import Article from "~/pages/Article";
 import Home from "~/pages/Home";
+import Form from "~/pages/Form";
 
 import styles from "./styles";
 import Header from "../../Header";
@@ -28,6 +29,7 @@ const Content = ({ classes }) => {
           <Route path="/" exact component={Home} />
           <Route path="/about" component={About} />
           <Route path="/article" component={Article} />
+          <Route path="/form" component={Form} />
         </div>
       </div>
     </Router>
