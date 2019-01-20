@@ -15,16 +15,16 @@ export default () => ({
     margin: 0
   },
   video: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    margin: '40px 0'
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    margin: "40px 0"
   },
   videoContainer: {
     width: 640,
     height: 360
   },
-  '@media (max-width: 800px)': {
+  "@media (max-width: 800px)": {
     videoContainer: {
       width: 320,
       height: 180

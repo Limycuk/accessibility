@@ -16,6 +16,7 @@ class LeftBarContainer extends Component {
 
     this.onClose = this.onClose.bind(this);
     this.toggleDisableAnimation = this.toggleDisableAnimation.bind(this);
+    this.toggleDeafMode = this.toggleDeafMode.bind(this);
   }
 
   onClose() {
@@ -32,17 +33,25 @@ class LeftBarContainer extends Component {
     }));
   }
 
+  toggleDeafMode() {
+    const { appActions } = this.props;
+
+    appActions.toggleDeafMode();
+  }
+
   render() {
-    const { isOpenedMenu, location } = this.props;
+    const { isOpenedMenu, location, isEnableDeafMode } = this.props;
     const { isDisabledAnimation } = this.state;
 
     const props = {
       onClose: this.onClose,
       toggleDisableAnimation: this.toggleDisableAnimation,
+      toggleDeafMode: this.toggleDeafMode,
       isOpenedMenu,
       links: NAVIGATIONS,
       pathname: location.pathname,
-      isDisabledAnimation
+      isDisabledAnimation,
+      isEnableDeafMode
     };
 
     return <View {...props} />;
@@ -51,7 +60,8 @@ class LeftBarContainer extends Component {
 
 LeftBarContainer.propTypes = {
   appActions: PropTypes.shape({
-    toggleDrawer: PropTypes.func.isRequired
+    toggleDrawer: PropTypes.func.isRequired,
+    toggleDeafMode: PropTypes.func.isRequired
   }).isRequired,
   isOpenedMenu: PropTypes.bool.isRequired,
   location: PropTypes.shape({

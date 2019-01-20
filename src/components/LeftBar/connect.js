@@ -6,7 +6,8 @@ import * as appActions from "~/actions/app";
 
 const mapStateToProps = state => {
   return {
-    isOpenedMenu: appSelectors.getIsOpenedMenu(state)
+    isOpenedMenu: appSelectors.getIsOpenedMenu(state),
+    isEnableDeafMode: appSelectors.getIsEnableDeafMode(state)
   };
 };
 

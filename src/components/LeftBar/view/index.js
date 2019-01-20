@@ -18,6 +18,8 @@ const LeftBar = ({
   links,
   pathname,
   isDisabledAnimation,
+  isEnableDeafMode,
+  toggleDeafMode,
   toggleDisableAnimation
 }) => {
   return (
@@ -60,9 +62,21 @@ const LeftBar = ({
           <FormControlLabel
             control={
               <Checkbox
+                checked={isEnableDeafMode}
+                onChange={toggleDeafMode}
+                value="deaf"
+                color="primary"
+              />
+            }
+            label="Enable deaf mode"
+            classes={{ root: classes.animationToggler }}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
                 checked={isDisabledAnimation}
                 onChange={toggleDisableAnimation}
-                value="checkedB"
+                value="animation"
                 color="primary"
               />
             }
@@ -81,7 +95,9 @@ LeftBar.propTypes = {
   isOpenedMenu: PropTypes.bool.isRequired,
   links: PropTypes.array.isRequired,
   isDisabledAnimation: PropTypes.bool.isRequired,
-  toggleDisableAnimation: PropTypes.func.isRequired
+  isEnableDeafMode: PropTypes.bool.isRequired,
+  toggleDisableAnimation: PropTypes.func.isRequired,
+  toggleDeafMode: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(LeftBar);
