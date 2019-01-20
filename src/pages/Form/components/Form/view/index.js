@@ -1,21 +1,39 @@
-import React from 'react';
-import DocumentTitle from 'react-document-title';
-import { compose } from 'redux';
-import { reduxForm, Field } from 'redux-form';
+import React from "react";
+import PropTypes from "prop-types";
+import DocumentTitle from "react-document-title";
+import { compose } from "redux";
+import { reduxForm, Field } from "redux-form";
 
-import { withStyles } from '@material-ui/core/styles';
+import Button from "@material-ui/core/Button";
+import { withStyles } from "@material-ui/core/styles";
 
-import { InputField, SelectField } from '~/packages/form';
+import {
+  InputField,
+  SelectField,
+  MultipleSelectField,
+  RadioGroupField,
+  SwitchField,
+  CheckboxField
+} from "~/packages/form";
 
-import { STATUS_OPTIONS } from '../../../constants';
-import styles from './styles';
+import {
+  STATUS_OPTIONS,
+  BANKS_OPTIONS,
+  GENDER_OPTIONS
+} from "../../../constants";
+import styles from "./styles";
 
-const Form = ({ classes }) => {
+const Form = ({ classes, handleSubmit }) => {
   return (
     <DocumentTitle title="Form - Accessibility">
       <main>
         <h1>Form</h1>
-        <form className={classes.form} noValidate autoComplete="off">
+        <form
+          className={classes.form}
+          onSubmit={handleSubmit}
+          noValidate
+          autoComplete="off"
+        >
           <Field
             name="name"
             component={InputField}
@@ -38,16 +56,42 @@ const Form = ({ classes }) => {
           />
           <Field
             isMultiple
-            name="achievments"
-            component={SelectField}
+            name="banks"
+            component={MultipleSelectField}
             className={classes.halfRow}
-            label="Achievments"
-            options={STATUS_OPTIONS}
+            label="Banks"
+            options={BANKS_OPTIONS}
           />
+          <Field
+            name="gender"
+            component={RadioGroupField}
+            className={classes.row}
+            label="Gender"
+            options={GENDER_OPTIONS}
+          />
+          <Field
+            name="favorite"
+            component={SwitchField}
+            className={classes.row}
+            label="Favorite"
+          />
+          <Field
+            name="approved"
+            component={CheckboxField}
+            className={classes.row}
+            label="Approved"
+          />
+          <Button variant="contained" color="primary" type="submit">
+            Submit
+          </Button>
         </form>
       </main>
     </DocumentTitle>
   );
+};
+
+Form.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default compose(

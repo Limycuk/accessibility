@@ -1,11 +1,13 @@
 export default theme => ({
   container: {
     boxSizing: "border-box",
-    marginTop: 8
+    marginTop: 20
   },
-  helperText: {
-    color: "red",
-    position: "absolute",
+  group: {
+    margin: `0`
+  },
+  error: {
+    ...theme.error,
     bottom: -16
   }
 });
