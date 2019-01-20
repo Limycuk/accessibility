@@ -1,5 +1,4 @@
 import React from "react";
-import classNames from "classnames";
 
 import Snackbar from "@material-ui/core/Snackbar";
 import { withStyles } from "@material-ui/core/styles";
