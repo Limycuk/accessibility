@@ -22,11 +22,13 @@ import {
   GENDER_OPTIONS
 } from "../../../constants";
 import styles from "./styles";
+import ResultSnackbar from "./Snackbar";
 
-const Form = ({ classes, handleSubmit }) => {
+const Form = ({ classes, handleSubmit, isShowNotification }) => {
   return (
     <DocumentTitle title="Form - Accessibility">
       <main>
+        <ResultSnackbar isOpen={isShowNotification} />
         <h1>Form</h1>
         <form
           className={classes.form}
@@ -91,7 +93,8 @@ const Form = ({ classes, handleSubmit }) => {
 };
 
 Form.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  isShowNotification: PropTypes.bool.isRequired
 };
 
 export default compose(
