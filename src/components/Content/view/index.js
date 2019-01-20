@@ -8,12 +8,11 @@ import { withStyles } from "@material-ui/core/styles";
 import Article from "~/pages/Article";
 import Home from "~/pages/Home";
 import Form from "~/pages/Form";
+import List from "~/pages/List";
 
 import styles from "./styles";
 import Header from "../../Header";
 import LeftBar from "../../LeftBar";
-
-const About = () => <h2>About</h2>;
 
 const Content = ({ classes }) => {
   return (
@@ -27,9 +26,9 @@ const Content = ({ classes }) => {
         <LeftBar />
         <div className={classes.content}>
           <Route path="/" exact component={Home} />
-          <Route path="/about" component={About} />
           <Route path="/article" component={Article} />
           <Route path="/form" component={Form} />
+          <Route path="/list" component={List} />
         </div>
       </div>
     </Router>

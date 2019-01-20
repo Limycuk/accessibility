@@ -6,15 +6,15 @@ export const NAVIGATIONS = [
     link: '/'
   },
   {
-    title: 'About',
-    link: '/about'
-  },
-  {
     title: 'Article',
     link: '/article'
   },
   {
     title: 'Form',
     link: '/form'
+  },
+  {
+    title: 'List',
+    link: '/list'
   }
 ];
