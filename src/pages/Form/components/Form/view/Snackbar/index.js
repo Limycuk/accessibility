@@ -18,6 +18,7 @@ const ResultSnackbar = ({ classes, isOpen }) => {
           root: classes.success
         }
       }}
+      role="alert"
       message={<span className={classes.message}>Success</span>}
     />
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
@@ -24,57 +24,95 @@ const MenuProps = {
   }
 };
 
-const SelectField = ({
-  classes,
-  label,
-  isFullWidth,
-  className,
-  isDisabled,
-  options,
-  value,
-  onChange,
-  name,
-  error,
-  submitFailed
-}) => {
-  return (
-    <FormControl
-      className={classNames(classes.container, className)}
-      fullWidth={isFullWidth}
-      disabled={isDisabled}
-    >
-      <InputLabel htmlFor={name}>{label}</InputLabel>
-      <Select
-        multiple
-        value={value}
-        onChange={onChange}
-        renderValue={selected => (
-          <Chips selected={selected} options={options} />
-        )}
-        MenuProps={MenuProps}
-        inputProps={{
-          name,
-          id: name
-        }}
-        classes={{
-          select: classes.select
-        }}
-      >
-        {options.map(item => {
-          const checked = value.includes(item.value);
+class SelectField extends Component {
+  constructor(props) {
+    super(props);
 
-          return (
-            <MenuItem key={item.value} value={item.value}>
-              <Checkbox checked={checked} />
-              <ListItemText primary={item.label} />
-            </MenuItem>
-          );
-        })}
-      </Select>
-      {submitFailed && error && <span className={classes.error}>{error}</span>}
-    </FormControl>
-  );
-};
+    this.state = {
+      isOpened: false
+    };
+
+    this.onOpen = this.onOpen.bind(this);
+    this.onClose = this.onClose.bind(this);
+  }
+
+  onOpen() {
+    this.setState({
+      isOpened: true
+    });
+  }
+
+  onClose() {
+    this.setState({
+      isOpened: false
+    });
+  }
+
+  render() {
+    const {
+      classes,
+      label,
+      isFullWidth,
+      className,
+      isDisabled,
+      options,
+      value,
+      onChange,
+      name,
+      error,
+      submitFailed
+    } = this.props;
+    const { isOpened } = this.state;
+    return (
+      <FormControl
+        className={classNames(classes.container, className)}
+        fullWidth={isFullWidth}
+        disabled={isDisabled}
+      >
+        <InputLabel htmlFor={name}>{label}</InputLabel>
+        <Select
+          role="listbox"
+          multiple
+          value={value}
+          onChange={onChange}
+          onOpen={this.onOpen}
+          onClose={this.onClose}
+          renderValue={selected => (
+            <Chips selected={selected} options={options} />
+          )}
+          MenuProps={MenuProps}
+          inputProps={{
+            name,
+            id: name,
+            "aria-label": `Field ${name}`,
+            "aria-autocomplete": false,
+            "aria-disabled": false,
+            "aria-required": false,
+            "aria-multiselectable": true,
+            "aria-expanded ": isOpened
+          }}
+          classes={{
+            select: classes.select
+          }}
+        >
+          {options.map(item => {
+            const checked = value.includes(item.value);
+
+            return (
+              <MenuItem key={item.value} value={item.value} tabIndex={2}>
+                <Checkbox checked={checked} />
+                <ListItemText primary={item.label} />
+              </MenuItem>
+            );
+          })}
+        </Select>
+        {submitFailed && error && (
+          <span className={classes.error}>{error}</span>
+        )}
+      </FormControl>
+    );
+  }
+}
 
 SelectField.propTypes = {
   isDisabled: PropTypes.bool,

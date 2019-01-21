@@ -34,6 +34,12 @@ const InputField = ({
           root: classes.helperText
         }
       }}
+      inputProps={{
+        "aria-label": `Field ${name}`,
+        "aria-autocomplete": false,
+        "aria-disabled": false,
+        "aria-required": true
+      }}
     />
   );
 };

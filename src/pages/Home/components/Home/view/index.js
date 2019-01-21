@@ -27,7 +27,7 @@ const Home = ({ classes, isEnableDeafMode }) => {
           committee of Rehabilitation International (RI).[1]
         </p>
         <div className={classes.video}>
-          <div className={classes.videoContainer}>
+          <div className={classes.videoContainer} aria-hidden="true">
             {isEnableDeafMode ? (
               <iframe
                 title="Video about fighters"
@@ -36,7 +36,6 @@ const Home = ({ classes, isEnableDeafMode }) => {
                 height="100%"
                 src="https://www.youtube.com/embed/ANKWlGYygRk"
                 frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               />
             ) : (
@@ -46,7 +45,6 @@ const Home = ({ classes, isEnableDeafMode }) => {
                 height="100%"
                 src="https://www.youtube.com/embed/u9gz_YDy2Sk"
                 frameborder="0"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               />
             )}

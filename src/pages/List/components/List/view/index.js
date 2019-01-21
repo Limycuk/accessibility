@@ -24,7 +24,10 @@ const List = ({ classes }) => {
                 title={tile.title}
                 subtitle={<span>by: {tile.author}</span>}
                 actionIcon={
-                  <IconButton className={classes.icon}>
+                  <IconButton
+                    className={classes.icon}
+                    aria-label={`Link to detail of ${tile.title}`}
+                  >
                     <Icon>info</Icon>
                   </IconButton>
                 }

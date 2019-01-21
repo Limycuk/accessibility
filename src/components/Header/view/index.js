@@ -25,11 +25,15 @@ const Header = ({
   return (
     <AppBar position="static">
       <Toolbar>
-        <IconButton color="inherit" aria-label="Menu" onClick={toggleMenu}>
+        <IconButton
+          color="inherit"
+          aria-label="Drawer Menu includes navigation"
+          onClick={toggleMenu}
+        >
           <Icon>menu</Icon>
         </IconButton>
         <Typography variant="h6" color="inherit">
-          <Link to="/" className={classes.logo}>
+          <Link to="/" className={classes.logo} aria-label="Logo">
             Accessibility
           </Link>
           {hasLink && <span className={classes.title}>{title}</span>}
@@ -37,6 +41,7 @@ const Header = ({
         <Button
           variant="contained"
           color="secondary"
+          aria-hidden="true"
           className={classes.button}
           onClick={toggleReadableMode}
         >

@@ -31,6 +31,7 @@ const LeftBar = ({
             to="/"
             className={classes.logo}
             onClick={onClose}
+            aria-label="Logo"
           >
             Accessibility
           </Button>
