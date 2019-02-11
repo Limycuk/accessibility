@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import * as appSelectors from "~/selectors/app";
+import * as appSelectors from '~/selectors/app';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    isEnableDeafMode: appSelectors.getIsEnableDeafMode(state)
+    isEnableAccessibilityMode: appSelectors.getIsEnableAccessibilityMode(state)
   };
 };
 
