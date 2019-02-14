@@ -1,15 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import classNames from "classnames";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
-import { withStyles } from "@material-ui/core/styles";
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Drawer from '@material-ui/core/Drawer';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 
-import styles from "./styles";
+import styles from './styles';
 
 const LeftBar = ({
   classes,
@@ -18,7 +18,7 @@ const LeftBar = ({
   links,
   pathname,
   isDisabledAnimation,
-  isEnableDeafMode,
+  isEnableAccessibilityMode,
   toggleDeafMode,
   toggleDisableAnimation
 }) => {
@@ -39,7 +39,7 @@ const LeftBar = ({
         <hr className={classes.hr} />
         <nav>
           <ul className={classes.list}>
-            {links.map(item => {
+            {links.map((item) => {
               const className = classNames(classes.link, {
                 [classes.activeLink]: pathname === item.link
               });
@@ -50,8 +50,7 @@ const LeftBar = ({
                     component={Link}
                     to={item.link}
                     className={className}
-                    onClick={onClose}
-                  >
+                    onClick={onClose}>
                     {item.title}
                   </Button>
                 </li>
@@ -63,13 +62,13 @@ const LeftBar = ({
           <FormControlLabel
             control={
               <Checkbox
-                checked={isEnableDeafMode}
+                checked={isEnableAccessibilityMode}
                 onChange={toggleDeafMode}
                 value="deaf"
                 color="primary"
               />
             }
-            label="Enable deaf mode"
+            label="Enable accessibility mode"
             classes={{ root: classes.animationToggler }}
           />
           <FormControlLabel
@@ -96,7 +95,7 @@ LeftBar.propTypes = {
   isOpenedMenu: PropTypes.bool.isRequired,
   links: PropTypes.array.isRequired,
   isDisabledAnimation: PropTypes.bool.isRequired,
-  isEnableDeafMode: PropTypes.bool.isRequired,
+  isEnableAccessibilityMode: PropTypes.bool.isRequired,
   toggleDisableAnimation: PropTypes.func.isRequired,
   toggleDeafMode: PropTypes.func.isRequired
 };

@@ -1,12 +1,12 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux';
 
-import isOpenedMenu from "./isOpenedMenu";
-import isEnableDeafMode from "./isEnableDeafMode";
-import isReadableMode from "./isReadableMode";
+import isOpenedMenu from './isOpenedMenu';
+import isEnableAccessibilityMode from './isEnableAccessibilityMode';
+import isReadableMode from './isReadableMode';
 
 const reducer = combineReducers({
   isOpenedMenu,
-  isEnableDeafMode,
+  isEnableAccessibilityMode,
   isReadableMode
 });
 

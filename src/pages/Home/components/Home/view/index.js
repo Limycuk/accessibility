@@ -1,12 +1,13 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
+import PropTypes from "prop-types";
 
 import { withStyles } from "@material-ui/core/styles";
 
 import Accessibility from "../../../images/accessibility.jpg";
 import styles from "./styles";
 
-const Home = ({ classes, isEnableDeafMode }) => {
+const Home = ({ classes, isEnableAccessibilityMode }) => {
   return (
     <DocumentTitle title="Accessibility">
       <main className={classes.container}>
@@ -27,18 +28,12 @@ const Home = ({ classes, isEnableDeafMode }) => {
           committee of Rehabilitation International (RI).[1]
         </p>
         <div className={classes.video}>
-          <div className={classes.videoContainer} aria-hidden="true">
-            {isEnableDeafMode ? (
-              <iframe
-                title="Video about fighters"
-                className={classes}
-                width="100%"
-                height="100%"
-                src="https://www.youtube.com/embed/ANKWlGYygRk"
-                frameborder="0"
-                allowfullscreen
-              />
-            ) : (
+          {isEnableAccessibilityMode ? (
+            <p>
+              <b>Text instead of video</b>
+            </p>
+          ) : (
+            <div className={classes.videoContainer}>
               <iframe
                 title="Video about accessibility in Japan"
                 width="100%"
@@ -47,8 +42,8 @@ const Home = ({ classes, isEnableDeafMode }) => {
                 frameborder="0"
                 allowfullscreen
               />
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <p>
           The ISA was designed by Danish design student Susanne Koefoed in 1968.
@@ -87,6 +82,8 @@ const Home = ({ classes, isEnableDeafMode }) => {
   );
 };
 
-Home.propTypes = {};
+Home.propTypes = {
+  isEnableAccessibilityMode: PropTypes.bool.isRequired
+};
 
 export default withStyles(styles)(Home);
